@@ -42,14 +42,17 @@ class Quotes extends Component {
     this.getRandomBackgroundColor();
     this.getRandomQuoteFont();
 
-    if (!localStorage.getItem("quotes")) {
-      await this.fetchQuotes().then(data => console.log("data :", data));
+    // if first session visit & sessionstorage empty
+    if (!sessionStorage.getItem("quotes")) {
+      await this.fetchQuotes().then(data =>
+        console.log("data fetched :", data)
+      );
     }
-    const localStorageValue = JSON.parse(localStorage.getItem("quotes"));
+    const sessionStorageValue = JSON.parse(sessionStorage.getItem("quotes"));
 
     await this.setState(
       {
-        quotes: localStorageValue,
+        quotes: sessionStorageValue,
       },
       () => {
         const { quotes } = this.state;
@@ -77,13 +80,11 @@ class Quotes extends Component {
   getNewQuote = prop => {
     this.getRandomBackgroundColor();
     this.getRandomQuoteFont();
+
     const { quotes } = this.state;
     const keys = Object.keys(quotes);
-    console.log("keys :", keys);
     const randomIndex = keys[Math.floor(Math.random() * keys.length)];
-    console.log("randomIndex :", randomIndex);
     const item = quotes[randomIndex];
-    console.log(item);
     this.setState({ quote: item, isLoading: false });
     return item;
   };
@@ -93,7 +94,7 @@ class Quotes extends Component {
     const response = await fetch(url);
     const data = await response.json();
 
-    localStorage.setItem("quotes", JSON.stringify(data));
+    sessionStorage.setItem("quotes", JSON.stringify(data));
     return data;
   }
 
@@ -113,8 +114,7 @@ class Quotes extends Component {
               className="quotes__title"
               //  style={{ fontFamily: randomFont }}
             >
-            &  
-            {quote.title.rendered}
+              &{quote.title.rendered}
             </p>
           </div>
         )}

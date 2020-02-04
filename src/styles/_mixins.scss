@@ -7,20 +7,26 @@
 }
 
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
+  @if type-of($number) == "number" and not unitless($number) {
     @return $number / ($number * 0 + 1);
   }
 
   @return $number;
 }
 
-@mixin responsive-font($min-size: $font-size-min, $size: $font-size, $limit: $page-limit) {
+@mixin responsive-font(
+  $min-size: $font-size-min,
+  $size: $font-size,
+  $limit: $page-limit
+) {
   $scale-font-enable: global-variable-exists(scale);
 
   $unitless-min: strip-unit($min-size);
   $unitless-size: strip-unit($size);
   $baseline: strip-unit($min-mobile);
-  $font-multiplier: (($unitless-size - $unitless-min) / (strip-unit($limit) - $baseline));
+  $font-multiplier: (
+    ($unitless-size - $unitless-min) / (strip-unit($limit) - $baseline)
+  );
   $font-baseline: ($unitless-min - $font-multiplier * $baseline);
 
   @if $unitless-min >= $unitless-size {
@@ -37,10 +43,11 @@
     font-size: #{$unitless-min}px;
 
     @if $scale-font-enable == true {
-      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)) * #{var(--scale-font)});
-    }
-
-    @else {
+      font-size: calc(
+        (#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)) *
+          #{var(--scale-font)}
+      );
+    } @else {
       font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)));
     }
   }
@@ -76,26 +83,29 @@
 // --------------------------------
 
 // define HSL color variable
-@mixin defineColorHSL($color, $hue, $saturation, $lightness){
-  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");#{$color}-h: #{$hue};#{$color}-s: #{$saturation};#{$color}-l: #{$lightness};
+@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
+  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
 }
 
 // return color with different opacity value
-@function alpha($color, $opacity){
-  $color: str-replace($color, 'var(');
-  $color: str-replace($color, ')');
-  $color-h: var(#{$color+'-h'});
-  $color-s: var(#{$color+'-s'});
-  $color-l: var(#{$color+'-l'});
+@function alpha($color, $opacity) {
+  $color: str-replace($color, "var(");
+  $color: str-replace($color, ")");
+  $color-h: var(#{$color + "-h"});
+  $color-s: var(#{$color + "-s"});
+  $color-l: var(#{$color + "-l"});
   @return hsla($color-h, $color-s, $color-l, $opacity);
 }
 
 // return color with different lightness value
-@function lightness($color, $lightnessMultiplier){
-  $color: str-replace($color, 'var(');
-  $color: str-replace($color, ')');
-  $color-h: var(#{$color+'-h'});
-  $color-s: var(#{$color+'-s'});
-  $color-l: var(#{$color+'-l'});
+@function lightness($color, $lightnessMultiplier) {
+  $color: str-replace($color, "var(");
+  $color: str-replace($color, ")");
+  $color-h: var(#{$color + "-h"});
+  $color-s: var(#{$color + "-s"});
+  $color-l: var(#{$color + "-l"});
   @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
 }
