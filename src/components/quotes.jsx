@@ -90,7 +90,8 @@ class Quotes extends Component {
   };
 
   async fetchQuotes() {
-    const url = "https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand";
+    const url =
+      "https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand&per_page=100";
     const response = await fetch(url);
     const data = await response.json();
 
