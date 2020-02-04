@@ -8,13 +8,13 @@ const socialLinks = [
   {
     icon: "github",
     name: "Github",
-    url: "https://github.com/soirs",
+    url: "https://github.com/soirs"
   },
   {
     icon: "link",
     name: "Portfolio",
-    url: "https://frankrs.dk?ref=quote",
-  },
+    url: "https://frankrs.dk?ref=quote"
+  }
 ];
 let randomFont;
 
@@ -28,13 +28,13 @@ class Quotes extends Component {
           id: 2177,
           content: {
             rendered:
-              "<p>Minimalism is not a lack of something. It’s simply the perfect amount of something.</p>",
+              "<p>Minimalism is not a lack of something. It’s simply the perfect amount of something.</p>"
           },
           link: "https://quotesondesign.com/nicholas-burroughs-3/",
-          title: { rendered: "Nicholas Burroughs" },
-        },
+          title: { rendered: "Nicholas Burroughs" }
+        }
       ],
-      quotes: {},
+      quotes: {}
     };
   }
 
@@ -52,7 +52,7 @@ class Quotes extends Component {
 
     await this.setState(
       {
-        quotes: sessionStorageValue,
+        quotes: sessionStorageValue
       },
       () => {
         const { quotes } = this.state;
@@ -71,7 +71,7 @@ class Quotes extends Component {
     const fonts = [
       "adobe-handwriting-ernie",
       "adobe-handwriting-frank",
-      "adobe-handwriting-tiffany",
+      "adobe-handwriting-tiffany"
     ];
 
     randomFont = fonts[Math.floor(Math.random() * fonts.length)];
@@ -115,7 +115,7 @@ class Quotes extends Component {
               className="quotes__title"
               //  style={{ fontFamily: randomFont }}
             >
-              &{quote.title.rendered}
+              {quote.title.rendered}
             </p>
           </div>
         )}

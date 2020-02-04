@@ -6,8 +6,6 @@
   transform: translate(-35%, 0);
   &__content {
     max-height: 60%;
-    // margin: 10px;
-
     > * {
       color: var(--text);
       font-size: 7vmin;
@@ -18,23 +16,34 @@
   &__title {
     text-align: right;
     font-family: $font-logo;
-    // padding: 2vh;
     margin: 0;
     color: var(--link);
     font-size: 6.5vmin;
   }
 }
-@include media("<=medium") {
+@include media("<=xsmall") {
   .quotes {
     top: 0;
     width: 90%;
     &__content > * {
-      font-size: 5.5vmin;
+      font-size: 4.5vmin;
+      line-height: 2rem;
+    }
+    &__title {
+      font-size: 4vmin;
+    }
+  }
+}
+@include media(">xsmall", "<=medium") {
+  .quotes {
+    top: 0;
+    width: 90%;
+    &__content > * {
+      font-size: 4.5vmin;
       line-height: 3rem;
     }
     &__title {
-      font-size: 6vmin;
-      font-weight: 900;
+      font-size: 4vmin;
     }
   }
 }
@@ -43,12 +52,11 @@
     top: 2vh;
     width: 80%;
     &__content > * {
-      font-size: 5vmin;
+      font-size: 4.5vmin;
       line-height: 3.5rem;
     }
     &__title {
-      font-size: 6vmin;
-      font-weight: 900;
+      font-size: 4vmin;
     }
   }
 }
