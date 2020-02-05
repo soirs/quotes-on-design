@@ -2,20 +2,9 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 import React, { Component } from "react";
-import { GitHub, Link, RefreshCw } from "react-feather";
+import { GitHub, Minus, Plus, RefreshCw } from "react-feather";
+import FontSizeChanger from "react-font-size-changer";
 
-const socialLinks = [
-  {
-    icon: "github",
-    name: "Github",
-    url: "https://github.com/soirs"
-  },
-  {
-    icon: "link",
-    name: "Portfolio",
-    url: "https://frankrs.dk?ref=quote"
-  }
-];
 let randomFont;
 
 class Quotes extends Component {
@@ -101,44 +90,75 @@ class Quotes extends Component {
 
   render() {
     const { quote, isLoading } = this.state;
+    const { content, title } = quote;
+    // const { rendered: quoteText } = content;
+    // const { rendered: quoteAuthor } = title;
     return (
       <>
-        {isLoading ? (
-          <p>Please hold..</p>
-        ) : (
-          <div className="quotes">
-            <p
-              className="quotes__content"
-              dangerouslySetInnerHTML={{ __html: quote.content.rendered }}
+        <div className="quotes">
+          {isLoading ? (
+            <span className="quotes__content">
+              <p>Please hold..</p>
+            </span>
+          ) : (
+            <>
+              <span
+                className="quotes__content"
+                dangerouslySetInnerHTML={{ __html: quote.content.rendered }}
+              />
+              <p
+                className="quotes__title"
+                dangerouslySetInnerHTML={{ __html: quote.title.rendered }}
+              />
+              {/* 
+                stylistic to give the author a human touch
+                 style={{ fontFamily: randomFont }} */}
+            </>
+          )}
+        </div>
+        <div className="footer">
+          <div className="footer__content">
+            <div className="footer__list">
+              <a
+                href="https://github.com/soirs/quotes-on-design"
+                className="footer__item"
+              >
+                <GitHub size="30" />
+              </a>
+            </div>
+            <FontSizeChanger
+              className="footer__button--fetch"
+              targets={[".quotes__content p"]}
+              options={{
+                stepSize: 5,
+                range: 25
+              }}
+              customButtons={{
+                up: <Plus size="30" />,
+                down: <Minus size="30" />,
+                style: {
+                  cursor: "pointer",
+                  // backgroundColor: "red",
+                  // color: "white",
+                  // WebkitBoxSizing: "border-box",
+                  // WebkitBorderRadius: "5px",
+                  height: "30px",
+                  width: "30px",
+                  border: "none"
+                },
+                buttonsMargin: 20
+              }}
             />
-            <p
-              className="quotes__title"
-              //  style={{ fontFamily: randomFont }}
+
+            <button
+              className="footer__button--fetch"
+              onClick={() => this.getNewQuote()}
+              type="button"
             >
-              {quote.title.rendered}
-            </p>
+              <RefreshCw size="30" />
+            </button>
           </div>
-        )}
-        <footer className="footer">
-          <div className="footer__icons">
-            {socialLinks.map(social => {
-              const { icon, name, url } = social;
-              return (
-                <a href={url} className="footer__icons--icon">
-                  {icon === "github" ? <GitHub /> : <Link />}
-                  {name}
-                </a>
-              );
-            })}
-          </div>
-          <button
-            className="footer__button--fetch"
-            onClick={() => this.getNewQuote()}
-            type="button"
-          >
-            <RefreshCw />
-          </button>
-        </footer>
+        </div>
       </>
     );
   }

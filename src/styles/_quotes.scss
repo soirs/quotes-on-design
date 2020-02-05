@@ -20,9 +20,7 @@
     color: var(--link);
     font-size: 6.5vmin;
   }
-}
-@include media("<=xsmall") {
-  .quotes {
+  @include media("<=xsmall") {
     top: 0;
     width: 90%;
     &__content > * {
@@ -33,9 +31,7 @@
       font-size: 4vmin;
     }
   }
-}
-@include media(">xsmall", "<=medium") {
-  .quotes {
+  @include media(">xsmall", "<=medium") {
     top: 0;
     width: 90%;
     &__content > * {
@@ -46,9 +42,7 @@
       font-size: 4vmin;
     }
   }
-}
-@include media(">medium") {
-  .quotes {
+  @include media(">medium") {
     top: 2vh;
     width: 80%;
     &__content > * {

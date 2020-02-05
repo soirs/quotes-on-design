@@ -1,35 +1,43 @@
 .footer {
+  @include container;
   font-family: $font-europa;
   font-variant: small-caps;
+  font-weight: 600;
 
   position: absolute;
-  right: 10%;
-  left: 10%;
-  width: 80%;
-  padding: 30px auto;
-  bottom: 4%;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  &__icons {
-    min-width: 60%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 5px;
+  &__content {
     display: flex;
-    margin-top: 1rem;
     justify-content: space-between;
-    &--icon {
-      margin: 10px;
+    border-bottom: 5px solid var(--link);
+    color: var(--link);
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    display: flex;
+    color: var(--link);
+    transition: 200ms opacity ease-in-out;
+    a {
       cursor: pointer;
-      color: var(--link);
-      text-decoration: none;
+      svg {
+        position: relative;
+        height: 50%;
+        &:active {
+          bottom: 5px;
+        }
+      }
     }
   }
   &__button--fetch {
-    @extend .footer__icons--icon;
-    padding: 15px;
+    cursor: pointer;
+    display: inline-block;
+    color: var(--link);
     background: none;
     border: none;
-    svg {
-      transform: scale(2.3);
-    }
   }
 }

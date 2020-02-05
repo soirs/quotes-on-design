@@ -9959,7 +9959,7 @@ react-dev-utils@^4.2.3:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@^16.12.0:
+react-dom@^16.12.0, react-dom@^16.5.2:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
   integrity sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
@@ -9985,6 +9985,14 @@ react-feather@^2.0.3:
   integrity sha512-XVjtxIyMxb2RFlqC2APoB/IZvXKDW9uLN1c264XEeZNYe8jIxjQVQpeTo3nxtHiLTgMfgf0ZYxJC6HwmY8+9BA==
   dependencies:
     prop-types "^15.7.2"
+
+react-font-size-changer@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-font-size-changer/-/react-font-size-changer-0.2.0.tgz#b265e92ebb851016243cecdf29cf82b8860c79fe"
+  integrity sha512-pJKflNE2KqalBUes7xz36mdhAHFJnuIhciqFRfexXRvZm5+yh28t4DR2MiftIIqnoK4muizUS/vCtzyKbuUtNA==
+  dependencies:
+    react "^16.5.2"
+    react-dom "^16.5.2"
 
 react-helmet@^5.2.1:
   version "5.2.1"
@@ -10038,7 +10046,7 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react@^16.12.0:
+react@^16.12.0, react@^16.5.2:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==

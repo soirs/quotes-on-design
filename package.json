@@ -29,6 +29,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
+    "react-font-size-changer": "^0.2.0",
     "react-helmet": "^5.2.1",
     "unsplash-credit": "^0.1.2"
   },
@@ -54,6 +55,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "eslint": "eslint --fix 'src/**/*.{js,jsx}'",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
