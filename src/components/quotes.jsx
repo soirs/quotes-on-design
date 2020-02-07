@@ -2,8 +2,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 import React, { Component } from "react";
-import { GitHub, Minus, Plus, RefreshCw } from "react-feather";
-import FontSizeChanger from "react-font-size-changer";
+import { GitHub, RefreshCw } from "react-feather";
 
 let randomFont;
 
@@ -12,18 +11,19 @@ class Quotes extends Component {
     super(props);
     this.state = {
       isLoading: true,
+      fontSize: "4vmin",
       quote: [
         {
           id: 2177,
           content: {
             rendered:
-              "<p>Minimalism is not a lack of something. It’s simply the perfect amount of something.</p>"
+              "<p>Minimalism is not a lack of something. It’s simply the perfect amount of something.</p>",
           },
           link: "https://quotesondesign.com/nicholas-burroughs-3/",
-          title: { rendered: "Nicholas Burroughs" }
-        }
+          title: { rendered: "Nicholas Burroughs" },
+        },
       ],
-      quotes: {}
+      quotes: {},
     };
   }
 
@@ -41,7 +41,7 @@ class Quotes extends Component {
 
     await this.setState(
       {
-        quotes: sessionStorageValue
+        quotes: sessionStorageValue,
       },
       () => {
         const { quotes } = this.state;
@@ -56,11 +56,13 @@ class Quotes extends Component {
     document.body.setAttribute("data-theme", bgColor);
   };
 
+  //  stylistic to give the author a human touch
+  //  not activated
   getRandomQuoteFont = () => {
     const fonts = [
       "adobe-handwriting-ernie",
       "adobe-handwriting-frank",
-      "adobe-handwriting-tiffany"
+      "adobe-handwriting-tiffany",
     ];
 
     randomFont = fonts[Math.floor(Math.random() * fonts.length)];
@@ -70,11 +72,15 @@ class Quotes extends Component {
     this.getRandomBackgroundColor();
     this.getRandomQuoteFont();
 
-    const { quotes } = this.state;
+    const { quotes, isLoading } = this.state;
     const keys = Object.keys(quotes);
     const randomIndex = keys[Math.floor(Math.random() * keys.length)];
     const item = quotes[randomIndex];
-    this.setState({ quote: item, isLoading: false });
+    this.setState({ quote: item, isLoading: false }, () => {
+      const { isLoading } = this.state;
+      isLoading ? null : this.fontAdjust();
+    });
+
     return item;
   };
 
@@ -88,9 +94,24 @@ class Quotes extends Component {
     return data;
   }
 
+  fontAdjust = value => {
+    const { quote } = this.state;
+
+    const quoteLength = quote.content.rendered.length;
+    const longQuote = quoteLength > 400;
+      console.log('???', quoteLength)
+      if (longQuote) {
+        const quoteStyle = document
+        .querySelectorAll(".quotes__content p")
+        .forEach(el => (el.style.fontSize = "0.8rem"));
+      console.log('RUNNING')
+      quoteStyle;
+    }
+  };
+
   render() {
     const { quote, isLoading } = this.state;
-    const { content, title } = quote;
+    // const { content, title } = quote;
     // const { rendered: quoteText } = content;
     // const { rendered: quoteAuthor } = title;
     return (
@@ -126,30 +147,24 @@ class Quotes extends Component {
                 <GitHub size="30" />
               </a>
             </div>
-            <FontSizeChanger
-              className="footer__button--fetch"
-              targets={[".quotes__content p"]}
-              options={{
-                stepSize: 5,
-                range: 25
-              }}
-              customButtons={{
-                up: <Plus size="30" />,
-                down: <Minus size="30" />,
-                style: {
-                  cursor: "pointer",
-                  // backgroundColor: "red",
-                  // color: "white",
-                  // WebkitBoxSizing: "border-box",
-                  // WebkitBorderRadius: "5px",
-                  height: "30px",
-                  width: "30px",
-                  border: "none"
-                },
-                buttonsMargin: 20
-              }}
-            />
+ {/*            <div className="footer__fontsize">
+              <button
+                className="footer__button--fetch"
+                onClick={() => this.getNewQuote()}
+                type="button"
+              >
+                <Plus size="30" />
+              </button>
 
+              <button
+                className="footer__button--fetch"
+                onClick={() => this.getNewQuote()}
+                type="button"
+              >
+                <Minus size="30" />
+              </button>
+            </div>
+             */}
             <button
               className="footer__button--fetch"
               onClick={() => this.getNewQuote()}
