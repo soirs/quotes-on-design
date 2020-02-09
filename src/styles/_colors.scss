@@ -4,45 +4,62 @@
 // Coolors Exported Palette - coolors.co/010101-1a67f5-007e53-c7edc6-fe6601
 
 :root {
-  @include defineColorHSL(--color--red, 24, 99%, 50%);
+  @include defineColorHSL(--color--red, 0, 100%, 50%);
+  @include defineColorHSL(--color--orange, 24, 99%, 50%);
   @include defineColorHSL(--color--green, 160, 100%, 25%);
   @include defineColorHSL(--color--mint, 119, 53%, 85%);
   @include defineColorHSL(--color--blue, 219, 92%, 53%);
   @include defineColorHSL(--color--purple, 238, 63%, 24%);
+  @include defineColorHSL(--color--yellow, 40, 86%, 60%);
+  @include defineColorHSL(--color--white, 0, 0%, 97%);
+  @include defineColorHSL(--color--black, 158, 50%, 3%);
+
+  --cc: hsl(0, 100%, 50%);
+  --cc: hsl(158, 50%, 3%);
+  --cc: hsl(333, 56%, 34%);
 }
 
-:root,
+/* :root,
 [data-theme="red"] {
   --bg: var(--color--red);
-  --text: var(--color--green);
-  --link: var(--color--purple);
+  --text: var(--color--yellow);
+  --link: var(--color--green);
   --hover: var(--color--blue);
   --accent: var(--accent--mint);
-}
+} */
+
+/* :root,
+[data-theme="orange"] {
+  --bg: var(--color--orange);
+  --text: var(--color--purple);
+  --link: var(--color--green);
+  --hover: var(--color--blue);
+  --accent: var(--accent--mint);
+} */
 
 :root,
 [data-theme="green"] {
   --bg: var(--color--green);
-  --text: var(--color--red);
-  --link: var(--color--purple);
+  --text: var(--color--yellow);
+  --link: var(--color--white);
   --hover: var(--color--blue);
   --accent: var(--accent--mint);
 }
 
-:root,
+/* :root,
 [data-theme="mint"] {
   --bg: var(--color--mint);
   --text: var(--color--purple);
-  --link: var(--color--red);
+  --link: var(--color--orange);
   --hover: var(--color--blue);
   --accent: var(--accent--mint);
-}
+} */
 
 :root,
 [data-theme="blue"] {
   --bg: var(--color--blue);
   --text: var(--color--mint);
-  --link: var(--color--purple);
+  --link: var(--color--yellow);
   --hover: var(--color--blue);
   --accent: var(--accent--mint);
 }
@@ -51,7 +68,31 @@
 [data-theme="purple"] {
   --bg: var(--color--purple);
   --text: var(--color--mint);
-  --link: var(--color--red);
+  --link: var(--color--orange);
+  --hover: var(--color--blue);
+  --accent: var(--accent--mint);
+}
+:root,
+[data-theme="yellow"] {
+  --bg: var(--color--yellow);
+  --text: var(--color--green);
+  --link: var(--color--purple);
+  --hover: var(--color--blue);
+  --accent: var(--accent--mint);
+}
+:root,
+[data-theme="black"] {
+  --bg: var(--color--black);
+  --text: var(--color--white);
+  --link: var(--color--yellow);
+  --hover: var(--color--blue);
+  --accent: var(--accent--mint);
+}
+:root,
+[data-theme="white"] {
+  --bg: var(--color--white);
+  --text: var(--color--black);
+  --link: var(--color--green);
   --hover: var(--color--blue);
   --accent: var(--accent--mint);
 }

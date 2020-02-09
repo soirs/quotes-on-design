@@ -51,7 +51,13 @@ class Quotes extends Component {
   }
 
   getRandomBackgroundColor = () => {
-    const colors = ["red", "green", "mint", "blue", "purple"];
+    const colors = [
+      /* "orange", */ "green",
+      /*  "mint", */ /* "blue",  */ "purple",
+      "yellow",
+      "black",
+      "white",
+    ];
     const bgColor = colors[Math.floor(Math.random() * colors.length)];
     document.body.setAttribute("data-theme", bgColor);
   };
@@ -97,20 +103,22 @@ class Quotes extends Component {
   fontAdjust = value => {
     const { quote } = this.state;
 
-    const quoteLength = quote.content.rendered.length;
-    const longQuote = quoteLength > 400;
-      console.log('???', quoteLength)
-      if (longQuote) {
-        const quoteStyle = document
+    const quoteWordLength = quote.content.rendered.split(" ").length;
+    const longQuote = quoteWordLength > 60; // over 400 chars.. rough estimate
+    // const longQuote = quoteLength > 400; // over 400 chars.. rough estimate
+
+    // console.log('???', quoteLength)
+    if (longQuote) {
+      const quoteStyle = document
         .querySelectorAll(".quotes__content p")
-        .forEach(el => (el.style.fontSize = "0.8rem"));
-      console.log('RUNNING')
+        .forEach(el => (el.style.fontSize = "4vmin"));
+      // console.log('RUNNING')
       quoteStyle;
     }
   };
 
   render() {
-    const { quote, isLoading } = this.state;
+    const { quote, quotes, isLoading } = this.state;
     // const { content, title } = quote;
     // const { rendered: quoteText } = content;
     // const { rendered: quoteAuthor } = title;
@@ -131,6 +139,13 @@ class Quotes extends Component {
                 className="quotes__title"
                 dangerouslySetInnerHTML={{ __html: quote.title.rendered }}
               />
+              {/*               <p
+                className="quotes__title"
+                dangerouslySetInnerHTML={{
+                  __html: quote.content.rendered.split(' ').length,
+                }} />
+              */}
+              
               {/* 
                 stylistic to give the author a human touch
                  style={{ fontFamily: randomFont }} */}
@@ -147,7 +162,8 @@ class Quotes extends Component {
                 <GitHub size="30" />
               </a>
             </div>
- {/*            <div className="footer__fontsize">
+            {/* PLUS MINUS BUTTONS - NOT ACTIVATED YET */}
+            {/*            <div className="footer__fontsize">
               <button
                 className="footer__button--fetch"
                 onClick={() => this.getNewQuote()}
