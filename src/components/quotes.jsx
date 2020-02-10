@@ -20,7 +20,9 @@ class Quotes extends Component {
               "<p>Minimalism is not a lack of something. It’s simply the perfect amount of something.</p>",
           },
           link: "https://quotesondesign.com/nicholas-burroughs-3/",
-          title: { rendered: "Nicholas Burroughs" },
+          title: {
+            rendered: "Nicholas Burroughs",
+          },
         },
       ],
       quotes: {},
@@ -74,7 +76,7 @@ class Quotes extends Component {
     randomFont = fonts[Math.floor(Math.random() * fonts.length)];
   };
 
-  getNewQuote = prop => {
+  getNewQuote = () => {
     this.getRandomBackgroundColor();
     this.getRandomQuoteFont();
 
@@ -104,24 +106,20 @@ class Quotes extends Component {
     const { quote } = this.state;
 
     const quoteWordLength = quote.content.rendered.split(" ").length;
-    const longQuote = quoteWordLength > 60; // over 400 chars.. rough estimate
-    // const longQuote = quoteLength > 400; // over 400 chars.. rough estimate
+    const longQuote = quoteWordLength > 80; // over 400 chars.. rough estimate
 
-    // console.log('???', quoteLength)
     if (longQuote) {
       const quoteStyle = document
         .querySelectorAll(".quotes__content p")
-        .forEach(el => (el.style.fontSize = "4vmin"));
-      // console.log('RUNNING')
+        .forEach(el =>
+          el.setAttribute("style", "font-size: 3.2vmin; line-height: 1.8rem;")
+        );
       quoteStyle;
     }
   };
 
   render() {
     const { quote, quotes, isLoading } = this.state;
-    // const { content, title } = quote;
-    // const { rendered: quoteText } = content;
-    // const { rendered: quoteAuthor } = title;
     return (
       <>
         <div className="quotes">
@@ -145,7 +143,7 @@ class Quotes extends Component {
                   __html: quote.content.rendered.split(' ').length,
                 }} />
               */}
-              
+
               {/* 
                 stylistic to give the author a human touch
                  style={{ fontFamily: randomFont }} */}
@@ -162,25 +160,6 @@ class Quotes extends Component {
                 <GitHub size="30" />
               </a>
             </div>
-            {/* PLUS MINUS BUTTONS - NOT ACTIVATED YET */}
-            {/*            <div className="footer__fontsize">
-              <button
-                className="footer__button--fetch"
-                onClick={() => this.getNewQuote()}
-                type="button"
-              >
-                <Plus size="30" />
-              </button>
-
-              <button
-                className="footer__button--fetch"
-                onClick={() => this.getNewQuote()}
-                type="button"
-              >
-                <Minus size="30" />
-              </button>
-            </div>
-             */}
             <button
               className="footer__button--fetch"
               onClick={() => this.getNewQuote()}
