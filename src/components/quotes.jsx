@@ -45,24 +45,8 @@ class Quotes extends Component {
         quotes: sessionStorageValue
       },
       () => {
-        const { quotes } = this.state;
-        this.getNewQuote(quotes);
+        this.getNewQuote();
       }
-    );
-    // https://stackoverflow.com/questions/56024398/disable-double-tap-zoom-resize-on-safari-ios12/56393464#56393464
-    document
-      .getElementById("button-fetch")
-      .addEventListener("click", event => {});
-    document.addEventListener(
-      "touchstart",
-      event => {
-        if (event.touches.length > 1) {
-          console.log("zoom plz stahp");
-          event.preventDefault();
-          event.stopPropagation(); // maybe useless
-        }
-      },
-      { passive: false }
     );
   }
 
