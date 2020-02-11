@@ -1,7 +1,7 @@
 .layout {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  min-height: -webkit-fill-available;
+  // min-height: -webkit-fill-available;
   display: grid;
   grid-template-columns: .8fr 8fr .8fr .1fr;
   grid-template-rows: 0.2fr 8.8fr .6fr 0.2fr;

@@ -40,6 +40,8 @@
     }
   }
   @include media(">medium") {
+  grid-template-areas: "quote-text ." "author-text .";
+
     &__content > * {
       font-size: 4.5vmin;
       line-height: 3.5rem;
