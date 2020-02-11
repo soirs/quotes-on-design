@@ -6,9 +6,9 @@
   grid-template-columns: .8fr 8fr .8fr .1fr;
   grid-template-rows: 0.2fr 8.8fr .6fr 0.2fr;
   grid-template-areas: ". . . ." ". quote quote ." ". footer . ." ". . . .";
-  @include media(">xsmall", "<=medium") {
-  height: 100vh;
-  min-height: -webkit-fill-available;
-  height: calc(100vh - 60px);
-  }
+  // @include media(">xsmall", "<=medium") {
+  // height: 100vh;
+  // min-height: -webkit-fill-available;
+  // // height: calc(100vh - 60px);
+  // }
 }
