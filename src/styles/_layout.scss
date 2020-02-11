@@ -1,6 +1,11 @@
+#gatsby-focus-wrapper, #___gatsby {
+  height: 100%;
+  width:100%;
+}
+
 .layout {
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100%;
+  // height: calc(var(--vh, 1vh) * 100);
   // min-height: -webkit-fill-available;
   display: grid;
   grid-template-columns: .8fr 8fr .8fr .1fr;
