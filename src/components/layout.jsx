@@ -9,6 +9,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {!isSSR && (
+        // Gatsby SSR - window breaks build
         <React.Suspense fallback={<div />}>
           {/* <Div100vh> */}
           <Helmet {...HelmetProps} />
