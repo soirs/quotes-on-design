@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Helmet {...HelmetProps} />
-      <main>{children}</main>
+      <main className="layout">{children}</main>
     </>
   );
 };

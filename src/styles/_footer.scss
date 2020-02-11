@@ -1,27 +1,23 @@
 .footer {
-  @include container;
   font-family: $font-europa;
-  font-variant: small-caps;
-  font-weight: 600;
-
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin-bottom: 5px;
+  grid-area: footer;
+  font-size: 3vmin;
+  text-transform: uppercase;
   &__content {
     display: flex;
     justify-content: space-between;
-    border-bottom: 5px solid var(--link);
+    padding-bottom: 4px;
+    border-bottom: 4px solid var(--link);
     color: var(--link);
-  }
-  &__list {
-    display: flex;
   }
   &__item {
     display: flex;
     color: var(--link);
     transition: 200ms opacity ease-in-out;
+    text-decoration: none;
+    &--frs {
+      font-family: $font-logo;
+    }
     a {
       cursor: pointer;
       svg {
@@ -33,10 +29,15 @@
       }
     }
   }
-  &__button--fetch {
+  &__button--fetch,
+  button {
+    text-transform: uppercase;
+
     cursor: pointer;
-    display: inline-block;
+    // display: inline-block;
     color: var(--link);
+    padding: 0;
+    text-align: right;
     background: none;
     border: none;
   }

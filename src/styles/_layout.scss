@@ -1,0 +1,7 @@
+.layout {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: .8fr 8fr .8fr .1fr;
+  grid-template-rows: 0.2fr 8.8fr .6fr 0.2fr;
+  grid-template-areas: ". . . ." ". quote quote ." ". footer . ." ". . . .";
+}

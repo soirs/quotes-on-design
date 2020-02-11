@@ -2,7 +2,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 import React, { Component } from "react";
-import { GitHub, RefreshCw } from "react-feather";
 
 let randomFont;
 
@@ -17,15 +16,15 @@ class Quotes extends Component {
           id: 2177,
           content: {
             rendered:
-              "<p>Minimalism is not a lack of something. It’s simply the perfect amount of something.</p>",
+              "<p>Minimalism is not a lack of something. It’s simply the perfect amount of something.</p>"
           },
           link: "https://quotesondesign.com/nicholas-burroughs-3/",
           title: {
-            rendered: "Nicholas Burroughs",
-          },
-        },
+            rendered: "Nicholas Burroughs"
+          }
+        }
       ],
-      quotes: {},
+      quotes: {}
     };
   }
 
@@ -43,7 +42,7 @@ class Quotes extends Component {
 
     await this.setState(
       {
-        quotes: sessionStorageValue,
+        quotes: sessionStorageValue
       },
       () => {
         const { quotes } = this.state;
@@ -58,7 +57,7 @@ class Quotes extends Component {
       /*  "mint", */ /* "blue",  */ "purple",
       "yellow",
       "black",
-      "white",
+      "white"
     ];
     const bgColor = colors[Math.floor(Math.random() * colors.length)];
     document.body.setAttribute("data-theme", bgColor);
@@ -70,7 +69,7 @@ class Quotes extends Component {
     const fonts = [
       "adobe-handwriting-ernie",
       "adobe-handwriting-frank",
-      "adobe-handwriting-tiffany",
+      "adobe-handwriting-tiffany"
     ];
 
     randomFont = fonts[Math.floor(Math.random() * fonts.length)];
@@ -152,20 +151,27 @@ class Quotes extends Component {
         </div>
         <div className="footer">
           <div className="footer__content">
-            <div className="footer__list">
-              <a
-                href="https://github.com/soirs/quotes-on-design"
-                className="footer__item"
-              >
-                <GitHub size="30" />
-              </a>
-            </div>
+            <a
+              title="Frank Richard Semakula Github"
+              href="https://github.com/soirs/quotes-on-design"
+              className="footer__item"
+            >
+              Github Repo
+            </a>
+            <a
+              title="Frank Richard Semakula Portfolio"
+              href="https://frankrs.dk"
+              className="footer__item footer__item--frs"
+            >
+              frs
+            </a>
             <button
+              title="Fetch new quote"
               className="footer__button--fetch"
               onClick={() => this.getNewQuote()}
               type="button"
             >
-              <RefreshCw size="30" />
+              New Quote
             </button>
           </div>
         </div>
