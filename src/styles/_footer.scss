@@ -1,8 +1,9 @@
 .footer {
   font-family: $font-europa;
   grid-area: footer;
-  font-size: 3vmin;
+  font-size: 4vmin;
   text-transform: uppercase;
+
   &__content {
     display: flex;
     justify-content: space-between;
@@ -10,31 +11,36 @@
     border-bottom: 4px solid var(--link);
     color: var(--link);
   }
+
   &__item {
     display: flex;
     color: var(--link);
     transition: 200ms opacity ease-in-out;
     text-decoration: none;
+
     &--frs {
       font-family: $font-logo;
     }
+
     a {
       cursor: pointer;
+
       svg {
         position: relative;
         height: 50%;
+
         &:active {
           bottom: 5px;
         }
       }
     }
   }
+
   &__button--fetch,
   button {
     text-transform: uppercase;
 
     cursor: pointer;
-    // display: inline-block;
     color: var(--link);
     padding: 0;
     text-align: right;

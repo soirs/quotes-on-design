@@ -7,16 +7,19 @@
   grid-template-columns: 9fr 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas: "quote-text ." "author-text author-text";
+
   &__content {
-    // max-height: 60%;
     grid-area: quote-text;
+
     > * {
+      letter-spacing: 0.1px;
       color: var(--text);
       font-size: 7vmin;
+      line-height: 7vmin;
       font-weight: 900;
-      line-height: 3rem;
     }
   }
+
   &__title {
     text-align: right;
     font-family: $font-logo;
@@ -27,24 +30,27 @@
 
     grid-area: author-text;
   }
+
   @include media("<=xsmall") {
     &__content > * {
       font-size: 4.5vmin;
-      line-height: 2rem;
+      line-height: 5vmin;
     }
   }
+
   @include media(">xsmall", "<=medium") {
     &__content > * {
       font-size: 4.5vmin;
-      line-height: 3rem;
+      line-height: 5vmin;
     }
   }
+
   @include media(">medium") {
-  grid-template-areas: "quote-text ." "author-text .";
+    grid-template-areas: "quote-text ." "author-text .";
 
     &__content > * {
       font-size: 4.5vmin;
-      line-height: 3.5rem;
+      line-height: 5vmin;
     }
   }
 }
